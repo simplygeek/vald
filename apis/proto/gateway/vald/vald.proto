@@ -45,9 +45,18 @@ service Vald {
       body : "*"
     };
   }
+  rpc SearchByObject(payload.Search.ObjectRequest)
+      returns (payload.Search.Response) {
+    option (google.api.http) = {
+      post : "/search/object"
+      body : "*"
+    };
+  }
   rpc StreamSearch(stream payload.Search.Request)
       returns (stream payload.Search.Response) {}
   rpc StreamSearchByID(stream payload.Search.IDRequest)
+      returns (stream payload.Search.Response) {}
+  rpc StreamSearchObject(stream payload.Search.ObjectRequest)
       returns (stream payload.Search.Response) {}
 
   rpc Insert(payload.Object.Vector) returns (payload.Empty) {

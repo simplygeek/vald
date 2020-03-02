@@ -27,4 +27,9 @@ import "payload.proto";
 import "google/api/annotations.proto";
 import "pb/gql.proto";
 
-service IngressFilter {}
+service IngressFilter {
+  option (gql.svc_type) = QUERY;
+  rpc Filter(payload.Object.RawData) returns (payload.Object.Vector) {}
+  rpc StreamFilter(stream payload.Object.RawData)
+      returns (stream payload.Object.Vector) {}
+}

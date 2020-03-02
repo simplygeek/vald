@@ -39,6 +39,11 @@ message Search {
     Config config = 2;
   }
 
+  message ObjectRequest {
+    repeated bytes datas = 1;
+    Config config = 2;
+  }
+
   message Config {
     uint32 num = 1 [ (validate.rules).uint32.gte = 1 ];
     float radius = 2;
@@ -69,6 +74,11 @@ message Object {
 
   message ID { string id = 1 [ (validate.rules).string.min_len = 1 ]; }
   message IDs { repeated string ids = 1; }
+
+  message RawData {
+    string id = 1 [ (validate.rules).string.min_len = 1 ];
+    repeated bytes datas = 2;
+  }
 
   message Vector {
     string id = 1 [ (validate.rules).string.min_len = 1 ];
